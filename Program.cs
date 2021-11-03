@@ -45,6 +45,7 @@ namespace lab6
     class Test : Experiment, IQuestion
     {
         private string theme = "C#";
+        public int Questins { get; set; }
         private int[] answers = new int[10] { 2, 4, 1, 1, 3, 1, 4, 4, 1, 3 };
 
         public int CheckAnswer(int[] answers)
@@ -70,27 +71,31 @@ namespace lab6
 
     partial class Exam : Experiment
     {
-        public Exam(string theme, string subject)
+        public Exam(string theme, string subject, Lecturer lecturer)
         {
             Theme = theme;
             Subject = subject;
+            Lecturer = lecturer;
         }
 
         public string Theme { get; set; }
         public string Subject { get; set; }
+        public Lecturer Lecturer { get; set; }
         public DateTime examDate = DateTime.Now.AddDays(12);
     }
 
     sealed class FinalExam : Exam
     {
-        public FinalExam(string theme, string subject):base(theme, subject)
+        public FinalExam(string theme, string subject, Lecturer lecturer) :base(theme, subject, lecturer)
         {
             Theme = theme;
             Subject = subject;
+            Lecturer = lecturer;
         }
 
         public new string Theme { get; set; }
-        public string Subject { get; set; }
+        public new string Subject { get; set; }
+        public new Lecturer Lecturer { get; set; }
         public override string ToString()
         {
             return this.Theme;

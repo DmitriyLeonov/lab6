@@ -8,5 +8,6 @@ namespace lab6
 {
     class Controller
     {
+
     }
 }
