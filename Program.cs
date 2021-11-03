@@ -45,8 +45,13 @@ namespace lab6
     class Test : Experiment, IQuestion
     {
         private string theme = "C#";
-        public int Questins { get; set; }
+        public int QuestinsCount { get; set; }
         private int[] answers = new int[10] { 2, 4, 1, 1, 3, 1, 4, 4, 1, 3 };
+
+        public Test()
+        {
+            QuestinsCount = new Random().Next(10, 30);
+        }
 
         public int CheckAnswer(int[] answers)
         {

@@ -8,8 +8,8 @@ namespace lab6
 {
     class Session
     {
-        private List<Experiment> Exams = new List<Experiment>();
-        private List<Experiment> Credits = new List<Experiment>();
+        public List<Experiment> Exams = new List<Experiment>();
+        public List<Experiment> Credits = new List<Experiment>();
 
         public void SetExams(Experiment experiment)
         {
