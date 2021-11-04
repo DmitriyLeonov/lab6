@@ -41,7 +41,7 @@ namespace lab6
             };
             Lecturer math, oop, philosophy, computerNetworks;
             math.Name = "Асмыкович";
-            math.Subject = (Exams)0;
+            math.Subject = 0;
             oop.Name = "Пацей";
             oop.Subject = (Exams)1;
             philosophy.Name = "Подручный";
