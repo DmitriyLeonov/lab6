@@ -6,14 +6,56 @@ using System.Threading.Tasks;
 
 namespace lab6
 {
-    static class Controller
+    class Controller
     {
-        public static int CountExperiments(Session session)
+        private Session session = new Session();
+
+        public void AddExam(Exam exam)
+        {
+            session.SetExams(exam);
+        }
+
+        public  void AddCredit(Test test)
+        {
+            session.SetCredits(test);
+        }
+
+        public  void DeleteExam(Exam exam)
+        {
+            session.DeleteExam(exam);
+        }
+
+        public  void DeleteCredit(Test test)
+        {
+            session.DeleteCredit(test);
+        }
+
+        public  List<Experiment> GetExamList()
+        {
+            return session.GetExamList();
+        }
+
+        public  List<Experiment> GetCreditList()
+        {
+            return session.GetCreditList();
+        }
+
+        public  void PrintExamList()
+        {
+            session.PrintExamList();
+        }
+
+        public  void PrintCreditList()
+        {
+            session.PrintCreditList();
+        }
+
+        public  int CountExperiments()
         {
             return session.Exams.Count() + session.Credits.Count();
         }
 
-        public static int CountTests(List<Test> tests, int questionsCount)
+        public  int CountTests(List<Test> tests, int questionsCount)
         {
             int counter = 0;
             foreach(Test test in tests)

@@ -13,19 +13,19 @@ namespace lab6
             return base.Equals(obj);
         }
 
-        public override string GetTheme()
+        public string GetInfo()
         {
-            return this.GetSubject();
+            return this.Subject + "-" + this.Lecturer.Name + "-" + this.ExamDate.Date + "\n";
         }
 
-        public string GetSubject()
+        public override string GetTheme()
         {
-            return this.Subject;
+            return this.GetInfo();
         }
 
         public override DateTime GetDate()
         {
-            return examDate;
+            return this.ExamDate;
         }
 
         public override int GetHashCode()

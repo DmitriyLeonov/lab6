@@ -17,7 +17,7 @@ namespace lab6
     struct Lecturer
     {
         public string Name;
-        public string Subject;
+        public Exams Subject;
 
         public void DisplayInfo()
         {
@@ -29,7 +29,37 @@ namespace lab6
     {
         static void Main(string[] args)
         {
-
+            Controller controller = new Controller();
+            List<Test> tests = new List<Test>()
+            { 
+                new Test(23),
+                new Test(16),
+                new Test(21),
+                new Test(13),
+                new Test(30),
+                new Test(21),
+            };
+            Lecturer math, oop, philosophy, computerNetworks;
+            math.Name = "Асмыкович";
+            math.Subject = 0;
+            oop.Name = "Пацей";
+            oop.Subject = (Exams)1;
+            philosophy.Name = "Подручный";
+            philosophy.Subject = (Exams)2;
+            computerNetworks.Name = "Миронов";
+            computerNetworks.Subject = (Exams)3;
+            Exam mathExam = new Exam("", "Математика", math, DateTime.Now.AddDays(50));
+            Exam oopExam = new Exam("", "ООП", oop, DateTime.Now.AddDays(55));
+            Exam philosophyExam = new Exam("", "Философия", philosophy, DateTime.Now.AddDays(61));
+            Exam computerNetworksExam = new Exam("", "Компьютерные сети", computerNetworks, DateTime.Now.AddDays(66));
+            controller.AddExam(mathExam);
+            controller.AddExam(oopExam);
+            controller.AddExam(philosophyExam);
+            controller.AddExam(computerNetworksExam);
+            controller.PrintExamList();
+            Console.WriteLine(controller.CountExperiments());
+            Console.WriteLine(controller.CountTests(tests, 21));
+            Console.ReadLine();
         }
     }
     public abstract class Experiment
@@ -46,11 +76,10 @@ namespace lab6
     {
         private string theme = "C#";
         public int QuestinsCount { get; set; }
-        private int[] answers = new int[10] { 2, 4, 1, 1, 3, 1, 4, 4, 1, 3 };
 
-        public Test()
+        public Test(int count)
         {
-            QuestinsCount = new Random().Next(10, 30);
+            QuestinsCount = count;
         }
 
         public int CheckAnswer(int[] answers)
@@ -76,22 +105,23 @@ namespace lab6
 
     partial class Exam : Experiment
     {
-        public Exam(string theme, string subject, Lecturer lecturer)
+        public Exam(string theme, string subject, Lecturer lecturer, DateTime examDate)
         {
             Theme = theme;
             Subject = subject;
             Lecturer = lecturer;
+            ExamDate = examDate;
         }
 
         public string Theme { get; set; }
         public string Subject { get; set; }
         public Lecturer Lecturer { get; set; }
-        public DateTime examDate = DateTime.Now.AddDays(12);
+        public DateTime ExamDate { get; set; }
     }
 
     sealed class FinalExam : Exam
     {
-        public FinalExam(string theme, string subject, Lecturer lecturer) :base(theme, subject, lecturer)
+        public FinalExam(string theme, string subject, Lecturer lecturer ,DateTime examDate) :base(theme, subject, lecturer,examDate)
         {
             Theme = theme;
             Subject = subject;
