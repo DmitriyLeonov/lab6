@@ -42,7 +42,7 @@ namespace lab6
 
         public  void PrintExamList()
         {
-            session.PrintExamList();
+            session.PrintExams();
         }
 
         public  void PrintCreditList()

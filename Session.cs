@@ -41,7 +41,7 @@ namespace lab6
             return Credits;
         }
 
-        public void PrintExamList()
+        public void PrintExams()
         {
             foreach(Experiment experiment in Exams)
             {
